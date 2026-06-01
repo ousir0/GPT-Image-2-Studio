@@ -1,0 +1,10 @@
+{
+  "id": "x-panorama-equirectangular-flow",
+  "title": "Panorama conversion workflow preview",
+  "scene_name": "基础图转 360 全景图",
+  "source_url": "https://x.com/i/web/status/2046717349945135472",
+  "local_asset_dir": "assets/cases/x-panorama-equirectangular-flow",
+  "media_urls": [
+    "https://pbs.twimg.com/amplify_video_thumb/2046717257578123264/img/JKvDW7t_m2Riqmis.jpg"
+  ]
+}

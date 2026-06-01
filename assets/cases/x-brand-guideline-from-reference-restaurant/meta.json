@@ -1,0 +1,15 @@
+{
+  "id": "x-brand-guideline-from-reference-restaurant",
+  "title": "Reference photo to restaurant brand guideline",
+  "scene_name": "单张参考图生成品牌指南",
+  "source_url": "https://x.com/i/web/status/2046869915034890703",
+  "local_asset_dir": "assets/cases/x-brand-guideline-from-reference-restaurant",
+  "media_urls": [
+    "https://pbs.twimg.com/media/HGfxVr_WQAAQTUS.jpg",
+    "https://pbs.twimg.com/media/HGfxVsCXgAAizeN.jpg",
+    "https://pbs.twimg.com/media/HGfxVr_WoAAxQrI.jpg",
+    "https://pbs.twimg.com/media/HGfxWOfWwAALSMW.jpg",
+    "https://pbs.twimg.com/media/HGfxWrdXUAA3EkH.jpg",
+    "https://pbs.twimg.com/media/HGf1gA1XAAAdCOy.jpg"
+  ]
+}

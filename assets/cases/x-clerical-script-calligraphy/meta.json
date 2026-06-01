@@ -1,0 +1,11 @@
+{
+  "id": "x-clerical-script-calligraphy",
+  "title": "Chinese clerical script calligraphy layout",
+  "scene_name": "中文隶书/书法排版海报",
+  "source_url": "https://x.com/i/web/status/2047882040096559249",
+  "local_asset_dir": "assets/cases/x-clerical-script-calligraphy",
+  "media_urls": [
+    "https://pbs.twimg.com/media/HGuJJbtbMAAKkQW.jpg",
+    "https://pbs.twimg.com/media/HGuJJbnaAAEfvrb.jpg"
+  ]
+}

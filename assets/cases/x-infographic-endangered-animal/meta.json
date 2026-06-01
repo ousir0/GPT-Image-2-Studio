@@ -1,0 +1,11 @@
+{
+  "id": "x-infographic-endangered-animal",
+  "title": "Chinese endangered animal infographic",
+  "scene_name": "中文濒危动物信息图",
+  "source_url": "https://x.com/i/web/status/2047153211560399009",
+  "local_asset_dir": "assets/cases/x-infographic-endangered-animal",
+  "media_urls": [
+    "https://pbs.twimg.com/media/HGjyi5zb0AEQ5p2.jpg",
+    "https://pbs.twimg.com/media/HGjy1ugasAAHU2N.jpg"
+  ]
+}

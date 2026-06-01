@@ -1,0 +1,10 @@
+{
+  "id": "x-scientist-comic",
+  "title": "Scientist Chinese comic with reference image",
+  "scene_name": "科学家人物漫画",
+  "source_url": "https://x.com/i/web/status/2046778077905056068",
+  "local_asset_dir": "assets/cases/x-scientist-comic",
+  "media_urls": [
+    "https://pbs.twimg.com/media/HGedwzEWsAAv40i.jpg"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "x-medical-infographic-json",
+  "title": "Medical infographic with JSON-like prompt",
+  "scene_name": "医学信息图 JSON 结构化海报",
+  "source_url": "https://x.com/i/web/status/2046891801072501046",
+  "local_asset_dir": "assets/cases/x-medical-infographic-json",
+  "media_urls": [
+    "https://pbs.twimg.com/media/HGgFPWjWQAAnIHp.jpg"
+  ]
+}

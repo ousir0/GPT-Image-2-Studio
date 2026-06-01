@@ -1,0 +1,132 @@
+[
+  {
+    "id": "x-infographic-endangered-animal",
+    "title": "Chinese endangered animal infographic",
+    "scene_name": "中文濒危动物信息图",
+    "source_url": "https://x.com/i/web/status/2047153211560399009",
+    "local_asset_dir": "assets/cases/x-infographic-endangered-animal",
+    "media_urls": [
+      "https://pbs.twimg.com/media/HGjyi5zb0AEQ5p2.jpg",
+      "https://pbs.twimg.com/media/HGjy1ugasAAHU2N.jpg"
+    ]
+  },
+  {
+    "id": "x-scientist-comic",
+    "title": "Scientist Chinese comic with reference image",
+    "scene_name": "科学家人物漫画",
+    "source_url": "https://x.com/i/web/status/2046778077905056068",
+    "local_asset_dir": "assets/cases/x-scientist-comic",
+    "media_urls": [
+      "https://pbs.twimg.com/media/HGedwzEWsAAv40i.jpg"
+    ]
+  },
+  {
+    "id": "x-chinese-modern-comic",
+    "title": "Chinese modern comic pages",
+    "scene_name": "中文现代漫画故事",
+    "source_url": "https://x.com/i/web/status/2047065819796930579",
+    "local_asset_dir": "assets/cases/x-chinese-modern-comic",
+    "media_urls": [
+      "https://pbs.twimg.com/media/HGijPZ6WIAAtoiL.png",
+      "https://pbs.twimg.com/media/HGijb82WkAAg1IE.png"
+    ]
+  },
+  {
+    "id": "x-3d-concept-store",
+    "title": "3D chibi concept store",
+    "scene_name": "3D Q版品牌概念店",
+    "source_url": "https://x.com/i/web/status/2046713824426762304",
+    "local_asset_dir": "assets/cases/x-3d-concept-store",
+    "media_urls": [
+      "https://pbs.twimg.com/media/HGdjQiZXYAAgI99.jpg"
+    ]
+  },
+  {
+    "id": "x-worldbuilding-set-desert-solar",
+    "title": "Futuristic desert civilization worldbuilding set",
+    "scene_name": "多图一致性世界观设定集",
+    "source_url": "https://x.com/i/web/status/2046866168208916503",
+    "local_asset_dir": "assets/cases/x-worldbuilding-set-desert-solar",
+    "media_urls": [
+      "https://pbs.twimg.com/media/HGft65WbQAA9TCP.jpg"
+    ]
+  },
+  {
+    "id": "x-brand-guideline-from-reference-restaurant",
+    "title": "Reference photo to restaurant brand guideline",
+    "scene_name": "单张参考图生成品牌指南",
+    "source_url": "https://x.com/i/web/status/2046869915034890703",
+    "local_asset_dir": "assets/cases/x-brand-guideline-from-reference-restaurant",
+    "media_urls": [
+      "https://pbs.twimg.com/media/HGfxVr_WQAAQTUS.jpg",
+      "https://pbs.twimg.com/media/HGfxVsCXgAAizeN.jpg",
+      "https://pbs.twimg.com/media/HGfxVr_WoAAxQrI.jpg",
+      "https://pbs.twimg.com/media/HGfxWOfWwAALSMW.jpg",
+      "https://pbs.twimg.com/media/HGfxWrdXUAA3EkH.jpg",
+      "https://pbs.twimg.com/media/HGf1gA1XAAAdCOy.jpg"
+    ]
+  },
+  {
+    "id": "x-medical-infographic-json",
+    "title": "Medical infographic with JSON-like prompt",
+    "scene_name": "医学信息图 JSON 结构化海报",
+    "source_url": "https://x.com/i/web/status/2046891801072501046",
+    "local_asset_dir": "assets/cases/x-medical-infographic-json",
+    "media_urls": [
+      "https://pbs.twimg.com/media/HGgFPWjWQAAnIHp.jpg"
+    ]
+  },
+  {
+    "id": "x-email-campaign-fenty",
+    "title": "Fenty Beauty email campaign sequence",
+    "scene_name": "邮件营销 Campaign 视觉序列",
+    "source_url": "https://x.com/i/web/status/2046717569013293231",
+    "local_asset_dir": "assets/cases/x-email-campaign-fenty",
+    "media_urls": [
+      "https://pbs.twimg.com/media/HGdlROVWgAEr1rx.jpg",
+      "https://pbs.twimg.com/media/HGdmqgfWsAAm9PY.jpg",
+      "https://pbs.twimg.com/media/HGdwmPIWMAAJXYe.jpg"
+    ]
+  },
+  {
+    "id": "x-sports-poster-stephen-curry",
+    "title": "Advanced Stephen Curry sports poster",
+    "scene_name": "单 Prompt 高级体育海报",
+    "source_url": "https://x.com/i/web/status/2047030997175124052",
+    "local_asset_dir": "assets/cases/x-sports-poster-stephen-curry",
+    "media_urls": [
+      "https://pbs.twimg.com/media/HGiD10CWoAEyy7z.jpg"
+    ]
+  },
+  {
+    "id": "x-panorama-equirectangular-flow",
+    "title": "Panorama conversion workflow preview",
+    "scene_name": "基础图转 360 全景图",
+    "source_url": "https://x.com/i/web/status/2046717349945135472",
+    "local_asset_dir": "assets/cases/x-panorama-equirectangular-flow",
+    "media_urls": [
+      "https://pbs.twimg.com/amplify_video_thumb/2046717257578123264/img/JKvDW7t_m2Riqmis.jpg"
+    ]
+  },
+  {
+    "id": "x-clerical-script-calligraphy",
+    "title": "Chinese clerical script calligraphy layout",
+    "scene_name": "中文隶书/书法排版海报",
+    "source_url": "https://x.com/i/web/status/2047882040096559249",
+    "local_asset_dir": "assets/cases/x-clerical-script-calligraphy",
+    "media_urls": [
+      "https://pbs.twimg.com/media/HGuJJbtbMAAKkQW.jpg",
+      "https://pbs.twimg.com/media/HGuJJbnaAAEfvrb.jpg"
+    ]
+  },
+  {
+    "id": "gh-rice-grain-micro-typography",
+    "title": "Rice grain micro typography",
+    "scene_name": "微观排版 / Rice Grain Typography",
+    "source_url": "https://github.com/ZeroLu/awesome-gpt-image",
+    "local_asset_dir": "assets/cases/gh-rice-grain-micro-typography",
+    "media_urls": [
+      "https://pbs.twimg.com/media/HGc-2eKWYAATrs9.jpg"
+    ]
+  }
+]

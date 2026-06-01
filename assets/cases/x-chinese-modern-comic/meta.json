@@ -1,0 +1,11 @@
+{
+  "id": "x-chinese-modern-comic",
+  "title": "Chinese modern comic pages",
+  "scene_name": "中文现代漫画故事",
+  "source_url": "https://x.com/i/web/status/2047065819796930579",
+  "local_asset_dir": "assets/cases/x-chinese-modern-comic",
+  "media_urls": [
+    "https://pbs.twimg.com/media/HGijPZ6WIAAtoiL.png",
+    "https://pbs.twimg.com/media/HGijb82WkAAg1IE.png"
+  ]
+}

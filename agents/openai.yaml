@@ -1,0 +1,7 @@
+interface:
+  display_name: "GPT Image 2 Studio"
+  short_description: "用 gpt-image-2 做出图、修图与场景化包装"
+  default_prompt: "Use $gpt-image-2-studio to turn my topic, references, or web research into gpt-image-2 prompts and finished visual deliverables."
+
+policy:
+  allow_implicit_invocation: true
