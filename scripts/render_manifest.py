@@ -7,18 +7,15 @@ import subprocess
 import sys
 import time
 
+from env_config import AUTH_ENV_KEYS, first_env_value, merge_local_env
+
 
 SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
 API_SCRIPT = SCRIPT_DIR / "gpt_image2_api.py"
 
 
 def has_auth(env: dict[str, str]) -> bool:
-    return bool(
-        env.get("OPENAI_API_KEY")
-        or env.get("GPT_IMAGE_API_AUTH_KEY")
-        or env.get("GPT_IMAGE_2_AUTH_KEY")
-        or env.get("AUTH_KEY")
-    )
+    return bool(first_env_value(env, AUTH_ENV_KEYS))
 
 
 def expected_success_marker(item: dict) -> pathlib.Path:
@@ -122,7 +119,7 @@ def main() -> int:
     if args.limit:
         items = items[: args.limit]
 
-    env = os.environ.copy()
+    env = merge_local_env(os.environ)
     if not args.dry_run and not has_auth(env):
         raise SystemExit("Missing auth key. Set OPENAI_API_KEY.")
 

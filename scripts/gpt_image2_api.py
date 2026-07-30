@@ -11,6 +11,13 @@ import urllib.error
 import urllib.request
 import requests
 
+from env_config import (
+    AUTH_ENV_KEYS,
+    BASE_URL_ENV_KEYS,
+    apply_local_env,
+    first_env_value,
+)
+
 
 DEFAULT_BASE_URL = "https://api.openai.com/v1"
 DEFAULT_MODEL = "gpt-image-2"
@@ -25,22 +32,13 @@ def read_prompt(args: argparse.Namespace) -> str:
 
 
 def get_auth_key(args: argparse.Namespace) -> str:
-    return (
-        args.auth_key
-        or os.getenv("OPENAI_API_KEY")
-        or os.getenv("GPT_IMAGE_2_AUTH_KEY")
-        or os.getenv("GPT_IMAGE_API_AUTH_KEY")
-        or os.getenv("AUTH_KEY")
-        or ""
-    ).strip()
+    return (args.auth_key or first_env_value(os.environ, AUTH_ENV_KEYS)).strip()
 
 
 def get_base_url(args: argparse.Namespace) -> str:
     return (
         args.base_url
-        or os.getenv("OPENAI_BASE_URL")
-        or os.getenv("GPT_IMAGE_2_BASE_URL")
-        or os.getenv("GPT_IMAGE_API_BASE")
+        or first_env_value(os.environ, BASE_URL_ENV_KEYS)
         or DEFAULT_BASE_URL
     ).rstrip("/")
 
@@ -242,6 +240,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
+    apply_local_env()
     parser = build_parser()
     args = parser.parse_args()
     try:

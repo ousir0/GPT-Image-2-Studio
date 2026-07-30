@@ -9,22 +9,26 @@ from typing import Iterable
 
 import requests
 
+from env_config import (
+    AUTH_ENV_KEYS,
+    BASE_URL_ENV_KEYS,
+    apply_local_env,
+    first_env_value,
+)
 
-DEFAULT_BASE_URL = (
-    os.environ.get("OPENAI_BASE_URL")
-    or os.environ.get("GPT_IMAGE_2_BASE_URL")
-    or os.environ.get("GPT_IMAGE_API_BASE")
-    or "https://api.openai.com/v1"
-).rstrip("/")
+
+DEFAULT_BASE_URL = "https://api.openai.com/v1"
+
+
+def default_base_url() -> str:
+    return (
+        first_env_value(os.environ, BASE_URL_ENV_KEYS)
+        or DEFAULT_BASE_URL
+    ).rstrip("/")
 
 
 def auth_key() -> str:
-    token = (
-        os.environ.get("OPENAI_API_KEY")
-        or os.environ.get("GPT_IMAGE_2_AUTH_KEY")
-        or os.environ.get("GPT_IMAGE_API_AUTH_KEY")
-        or os.environ.get("AUTH_KEY")
-    )
+    token = first_env_value(os.environ, AUTH_ENV_KEYS)
     if not token:
         raise SystemExit("Missing auth key. Set OPENAI_API_KEY.")
     return token
@@ -114,7 +118,7 @@ def edit(args: argparse.Namespace) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Run OpenAI-compatible image generation or editing with gpt-image-2.")
-    parser.add_argument("--base-url", default=DEFAULT_BASE_URL, help="Base URL, defaults to OPENAI_BASE_URL or https://api.openai.com/v1")
+    parser.add_argument("--base-url", default=default_base_url(), help="Base URL, defaults to local config, OPENAI_BASE_URL, or https://api.openai.com/v1")
     parser.add_argument("--timeout", type=int, default=180, help="HTTP timeout in seconds")
 
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -140,6 +144,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> None:
+    apply_local_env()
     parser = build_parser()
     args = parser.parse_args()
     args.func(args)

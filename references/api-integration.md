@@ -27,6 +27,18 @@ Use one of:
 
 Never hardcode secrets into the skill.
 
+The scripts also read `~/.config/gpt-image-2-studio/env`. Configuration
+precedence is:
+
+1. Explicit CLI options such as `--auth-key` and `--base-url`
+2. The local skill config file
+3. Inherited process environment variables
+4. Built-in defaults
+
+When the local file contains any supported auth or base URL alias, that local
+group replaces all inherited aliases in the same group. This prevents stale
+desktop-process credentials from being selected under another variable name.
+
 ## Generate
 
 Endpoint:
