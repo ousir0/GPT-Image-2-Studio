@@ -109,6 +109,12 @@ Use `edits` when:
 
 ### 6. Call the API
 
+Check configuration without making a network request or spending image quota:
+
+```bash
+python skills/gpt-image-2-studio/scripts/gpt_image2_api.py config-check
+```
+
 For one-off images, use the bundled API script:
 
 ```bash

@@ -39,8 +39,13 @@ def read_local_env(env_path: pathlib.Path = LOCAL_ENV_PATH) -> dict[str, str]:
     return values
 
 
+def first_env_key(env: Mapping[str, str], keys: tuple[str, ...]) -> str:
+    return next((key for key in keys if env.get(key)), "")
+
+
 def first_env_value(env: Mapping[str, str], keys: tuple[str, ...]) -> str:
-    return next((env[key] for key in keys if env.get(key)), "")
+    key = first_env_key(env, keys)
+    return env.get(key, "")
 
 
 def merge_local_env(

@@ -1,4 +1,5 @@
 import argparse
+import json
 import os
 import pathlib
 import sys
@@ -103,6 +104,48 @@ class EnvConfigTest(unittest.TestCase):
             clear=True,
         ):
             self.assertEqual(gpt_image2_api.get_auth_key(args), "explicit-key")
+
+    def test_config_report_uses_local_sources_without_exposing_key(self) -> None:
+        args = argparse.Namespace(auth_key=None, base_url=None)
+        local_values = {
+            "GPT_IMAGE_2_AUTH_KEY": "fresh-local-key",
+            "GPT_IMAGE_2_BASE_URL": "https://images.example/v1",
+        }
+
+        report = gpt_image2_api.build_config_report(
+            args, dict(local_values), local_values
+        )
+
+        self.assertEqual(report["status"], "ok")
+        self.assertEqual(report["auth"]["source"], "local_config")
+        self.assertEqual(report["auth"]["variable"], "GPT_IMAGE_2_AUTH_KEY")
+        self.assertFalse(report["network_request_made"])
+        self.assertFalse(report["image_quota_used"])
+        self.assertNotIn("fresh-local-key", json.dumps(report))
+
+    def test_config_report_marks_cli_override_without_exposing_key(self) -> None:
+        args = argparse.Namespace(
+            auth_key="explicit-secret-key",
+            base_url="https://override.example/v1/",
+        )
+
+        report = gpt_image2_api.build_config_report(args, {}, {})
+
+        self.assertEqual(report["auth"]["source"], "cli")
+        self.assertEqual(report["auth"]["variable"], "--auth-key")
+        self.assertEqual(report["base_url"]["source"], "cli")
+        self.assertEqual(report["base_url"]["value"], "https://override.example/v1")
+        self.assertNotIn("explicit-secret-key", json.dumps(report))
+
+    def test_config_report_returns_error_when_auth_is_missing(self) -> None:
+        args = argparse.Namespace(auth_key=None, base_url=None)
+
+        report = gpt_image2_api.build_config_report(args, {}, {})
+
+        self.assertEqual(report["status"], "error")
+        self.assertFalse(report["auth"]["configured"])
+        self.assertEqual(report["auth"]["source"], "missing")
+        self.assertEqual(report["base_url"]["source"], "default")
 
 
 if __name__ == "__main__":

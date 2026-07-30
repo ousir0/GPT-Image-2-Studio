@@ -14,8 +14,11 @@ import requests
 from env_config import (
     AUTH_ENV_KEYS,
     BASE_URL_ENV_KEYS,
+    LOCAL_ENV_PATH,
     apply_local_env,
+    first_env_key,
     first_env_value,
+    read_local_env,
 )
 
 
@@ -41,6 +44,61 @@ def get_base_url(args: argparse.Namespace) -> str:
         or first_env_value(os.environ, BASE_URL_ENV_KEYS)
         or DEFAULT_BASE_URL
     ).rstrip("/")
+
+
+def config_value_source(
+    explicit_value: str | None,
+    env: dict[str, str],
+    local_values: dict[str, str],
+    keys: tuple[str, ...],
+) -> tuple[str, str | None]:
+    if explicit_value:
+        return "cli", None
+    if any(key in local_values for key in keys):
+        return "local_config", first_env_key(local_values, keys) or None
+    selected_key = first_env_key(env, keys)
+    if selected_key:
+        return "environment", selected_key
+    return "missing", None
+
+
+def build_config_report(
+    args: argparse.Namespace,
+    env: dict[str, str],
+    local_values: dict[str, str],
+) -> dict:
+    auth_key = args.auth_key or first_env_value(env, AUTH_ENV_KEYS)
+    auth_source, auth_variable = config_value_source(
+        args.auth_key, env, local_values, AUTH_ENV_KEYS
+    )
+    base_url_source, base_url_variable = config_value_source(
+        args.base_url, env, local_values, BASE_URL_ENV_KEYS
+    )
+    if base_url_source == "missing":
+        base_url_source = "default"
+    base_url = (
+        args.base_url
+        or first_env_value(env, BASE_URL_ENV_KEYS)
+        or DEFAULT_BASE_URL
+    ).rstrip("/")
+
+    return {
+        "status": "ok" if auth_key else "error",
+        "network_request_made": False,
+        "image_quota_used": False,
+        "local_config_path": str(LOCAL_ENV_PATH),
+        "auth": {
+            "configured": bool(auth_key),
+            "source": auth_source,
+            "variable": "--auth-key" if args.auth_key else auth_variable,
+            "value_exposed": False,
+        },
+        "base_url": {
+            "value": base_url,
+            "source": base_url_source,
+            "variable": "--base-url" if args.base_url else base_url_variable,
+        },
+    }
 
 
 def build_endpoint(base_url: str, path: str) -> str:
@@ -201,6 +259,12 @@ def handle_edit(args: argparse.Namespace) -> int:
     return 0
 
 
+def handle_config_check(args: argparse.Namespace) -> int:
+    report = build_config_report(args, dict(os.environ), read_local_env())
+    print(json.dumps(report, ensure_ascii=False, indent=2))
+    return 0 if report["status"] == "ok" else 1
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Call OpenAI-compatible gpt-image endpoints.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -235,6 +299,14 @@ def build_parser() -> argparse.ArgumentParser:
     add_common_arguments(edit)
     edit.add_argument("--image", action="append", help="Input image path", required=True)
     edit.set_defaults(func=handle_edit)
+
+    config_check = subparsers.add_parser(
+        "config-check",
+        help="Inspect configuration sources without making a network request",
+    )
+    config_check.add_argument("--auth-key", help="Explicit API key override")
+    config_check.add_argument("--base-url", help="Explicit API base URL override")
+    config_check.set_defaults(func=handle_config_check)
 
     return parser
 

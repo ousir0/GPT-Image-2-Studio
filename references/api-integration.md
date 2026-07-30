@@ -39,6 +39,16 @@ When the local file contains any supported auth or base URL alias, that local
 group replaces all inherited aliases in the same group. This prevents stale
 desktop-process credentials from being selected under another variable name.
 
+Run a local-only configuration check before generating an image:
+
+```bash
+python scripts/gpt_image2_api.py config-check
+```
+
+The command reports which configuration source and variable will be used. It
+does not print the key, make a network request, or consume image quota. An exit
+code of `0` means an auth key is configured; `1` means it is missing.
+
 ## Generate
 
 Endpoint:
